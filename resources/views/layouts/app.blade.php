@@ -20,15 +20,18 @@
                 @auth
                     @if (count(auth()->user()->roles) == 1)
                         <li><a href="#" class="user_id">{{ auth()->user()->firstname }}  {{ auth()->user()->lastname }}</a></li>
-                        <li><a href="{{ route('home') }}"> ACCUEIL</a></li>
-                        <li><a href="#">LOCATIONS</a></li>
+                        <li><a href="{{ route('home') }}">ACCUEIL</a></li>
+                        <li><a href="{{ route('auth.user_rents') }}">LOCATIONS</a></li>
+                        <li><a href="{{ route('auth.user_free_rents') }}">EMPRUNTS</a></li>
                     @endif
                     @if (count(auth()->user()->roles) == 2)
-                        <li><a href="#" class="user_id">{{ auth()->user()->firstname }}  {{ auth()->user()->lastname }}</a></li>
-                        <li><a href="{{ route('home') }}">ACCUEIL</a></li>
+                        <li><a href="{{ route('auth.user_rents') }}">OCATIONS</a></li>
+                        <li><a href="{{ route('auth.user_free_rents') }}">EMPRUNTS</a></li>
+                        <li><a href="">LISTE DES UTILISATEURS</a></li>
+                        <li><a href="">AYANTS EMPRUNTÉ</a></li>
                         <li><a href="{{ route('cars@dashboard') }}">VOITURES</a></li>
                         <li><a href="{{ route('car_add') }}">AJOUTER VOITURE</a></li>
-                        <li><a href="{{ route('users@dashboard') }}">UTILISATEURS</a></li>
+                        <li><a href="{{ route('home') }}">ACCUEIL</a></li>                        
                     @endif
                 @endauth
                 @guest
@@ -36,7 +39,6 @@
                     <li><a href="{{ route('login') }}">CONNEXION</a></li>
                     <li><a href="{{ route('user@register_view') }}">INSCRIPTION</a></li>
                 @endguest
-
             </ul>
             <div class="burger">
                 <div class="line1"></div>
@@ -48,28 +50,68 @@
         @yield('content')
 
         <footer class="footer">
-            <div class="p-4 copyrightLayout">
-                <div class="container-fluid p-3 mt-2">
+            @guest
+                <div class="p-4 copyrightLayout">
+                    <div class="container-fluid p-2 mt-2">
+                        <h6 class="copyright text-white display-6 text-center">COPYRIGHT &copy; <span id="year"></span> BY DEVCRAFT LLC</h6>
+                    </div>
+                </div>
+                <div class="py-0 copyrightLayout bg-dark">
+                    <div class="container-fluid ">
+                        <div class="row ">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <form action="{{ route('carrental.policies') }}" class="logout text-white text-center" method="get">
+                                            @csrf
+                                            <button type="submit">Politiques et Confidentialités</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endguest
+            @auth
+            <div class="py-4 copyrightLayout">
+                <div class="container-fluid p-2 mt-2">
                     <h6 class="copyright text-white display-6 text-center">COPYRIGHT &copy; <span id="year"></span> BY DEVCRAFT LLC</h6>
                 </div>
             </div>
-            @auth
-                <div class="p-2 copyrightLayout">
-                    <div class="container-fluid p-2 mt-1">
-                        <h6 class="copyright text-white display-6 text-center">{{ auth()->user()->login }}@CaRRentAL</h6>
-                    </div>
-                    <div class="container-fluid p-2 mt-1">
-                        <form action="{{ route('logout') }}" class="logout text-white text-center" method="POST">
-                            @csrf
-                            <button type="submit">déconnexion</button>
-                        </form>
+            <div class="p-1 copyrightLayout">
+                <div class="container-fluid p-2 mt-1">
+                    <h6 class="copyright text-white display-6 text-center">{{ auth()->user()->login }}@CaRRentAL</h6>
+                </div>
+            </div>
+            <div class="py-0 copyrightLayout bg-dark">
+                <div class="container-fluid ">
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form action="{{ route('carrental.policies') }}" class="logout text-white text-center" method="get">
+                                        @csrf
+                                        <button type="submit">Politiques et Confidentialités</button>
+                                    </form>
+                                </div>
+                                <div class="col-md-6">
+                                    <form action="{{ route('logout') }}" class="logout text-white text-center" method="POST">
+                                        @csrf
+                                        <button type="submit">Déconnexion</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
             @endauth
+            <button onClick="topFunction()" id="myBtn" title="Haut de Page"><span class="fas fa-chevron-circle-up fa-2x"></span></button>
         </footer>
-        <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('js/script.js') }}"></script>
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/script.js') }}"></script>
     </body>
 </html>

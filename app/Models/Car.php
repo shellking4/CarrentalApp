@@ -11,6 +11,11 @@ class Car extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        'isFreeRented' => 'boolean',
+        'isRented' => 'boolean'
+    ];
+
     protected $fillable = [
         'model',
         'clearName',
@@ -18,6 +23,7 @@ class Car extends Model
         'image',
         'nbPlaces',
         'price',
+        'isFreeRented',
         'isRented'
     ];
 

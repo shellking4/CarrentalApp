@@ -40,8 +40,14 @@
             </form>
         </div>
     </div>
-    <div class="py-12"></div>
-    <div class="py-12"></div>
+    <div class="flex justify-center my-3">
+        <div class="w-5/12 p-6 rounded-lg">
+            <form action="{{ route('user@register_view') }}" class="flex justify-center text-center" method="get">
+                @csrf
+                <button type="submit" class="text-blue-800">Pas de compte ? Créez-en un</button>
+            </form>
+        </div>
+    </div>
     <div class="py-12"></div>
     <div class="py-12"></div>
 @endsection

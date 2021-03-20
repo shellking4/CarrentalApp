@@ -54,4 +54,18 @@ class UserController extends Controller
 
         return redirect()->route('users@dashboard');
     }
+
+    public function getUserFreeRents(User $user)
+    {
+        return view('admins.freeRents', [
+            'user' => $user
+        ]);
+    }
+
+    public function getUserRents(User $user)
+    {
+        return view('admins.rents', [
+            'user' => $user
+        ]);
+    }
 }

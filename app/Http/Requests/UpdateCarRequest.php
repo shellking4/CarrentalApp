@@ -27,7 +27,7 @@ class UpdateCarRequest extends FormRequest
             'model' => 'required|max:255',
             'clearname' => 'required|max:255',
             'description' => 'required',
-            'nbplaces' => 'required',
+            'nbplaces' => 'required|gt:0',
             'price' => 'required|regex:/^\d+(\. \d{1,2})?$/',
             'car_image' => 'image|mimes:jpeg,jpg,png,gif,webp'
         ];
@@ -39,6 +39,7 @@ class UpdateCarRequest extends FormRequest
             'clearname.required' => 'L\'appelation en claire est requise',
             'description.required' => 'La description est requise',
             'nbplaces.required' => 'Le nombre de places est requis',
+            'nbplaces.gt' => 'Ce nombre doit être supérieur à zéro',
             'price.required' => 'Veuillez spécifier le prix',
             'price.regex' => 'Veuillez entrer un prix correct',
             'car_image.image' => 'Votre fichier doit être une image',

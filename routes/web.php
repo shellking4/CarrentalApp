@@ -26,3 +26,11 @@ Route::get('/dashboard/users', [UserController::class, 'index'])->name('users@da
 Route::get('/dashboard/users/{user}/update', [UserController::class, 'render_update_form'])->name('user_update_view');
 Route::post('/dashboard/users/{id}/update', [UserController::class, 'update'])->name('user_update_action');
 Route::delete('/dashboard/users/{user}', [UserController::class, 'delete'])->name('user_delete');
+Route::get('/dashboard/users/{user}/freeRents', [UserController::class, 'getUserFreeRents'])->name('user_free_rents');
+Route::get('/dashboard/users/{user}/rents', [UserController::class, 'getUserRents'])->name('user_rents');
+Route::get('/me/freeRents', [HomeController::class, 'getUserFreeRents'])->name('auth.user_free_rents');
+Route::get('/me/rents', [HomeController::class, 'getUserRents'])->name('auth.user_rents');
+Route::get('/platform.policies', [HomeController::class, 'showCarrentalPolicies'])->name('carrental.policies');
+Route::post('/freeRent/{car}', [HomeController::class, 'freeRent'])->name('free_rent.proceed');
+Route::post('/rent/{car}', [HomeController::class, 'rent'])->name('rent.proceed');
+Route::resource('policies', HomeController::class);
