@@ -25,7 +25,7 @@
                         <li><a href="{{ route('auth.user_free_rents') }}">EMPRUNTS</a></li>
                     @endif
                     @if (count(auth()->user()->roles) == 2)
-                        <li><a href="{{ route('auth.user_rents') }}">OCATIONS</a></li>
+                        <li><a href="{{ route('auth.user_rents') }}">LOCATIONS</a></li>
                         <li><a href="{{ route('auth.user_free_rents') }}">EMPRUNTS</a></li>
                         <li><a href="">LISTE DES UTILISATEURS</a></li>
                         <li><a href="">AYANTS EMPRUNTÉ</a></li>
