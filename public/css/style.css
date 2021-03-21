@@ -238,7 +238,7 @@ h5, h4 {
     flex-direction: column;
     border-radius: 10px;
     opacity: 0;
-    pointer-events: none;
+    visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.6s ease;
 } 
@@ -256,7 +256,7 @@ h5, h4 {
     flex-direction: column;
     border-radius: 10px;
     opacity: 0;
-    pointer-events: none;
+    visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.6s ease;
 }
@@ -285,7 +285,7 @@ h5, h4 {
 .cars button:focus + ul {
     opacity: 1;
     background-color: #4F5757;
-    pointer-events: all;
+    visibility: initial;
     transform: translateY(0px);
 }
 

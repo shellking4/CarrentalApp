@@ -34,3 +34,4 @@ Route::get('/platform.policies', [HomeController::class, 'showCarrentalPolicies'
 Route::post('/freeRent/{car}', [HomeController::class, 'freeRent'])->name('free_rent.proceed');
 Route::post('/rent/{car}', [HomeController::class, 'rent'])->name('rent.proceed');
 Route::resource('policies', HomeController::class);
+Route::get('/rent/{car}/form', [HomeController::class, 'render_rent_form'])->name('rent_perform_view');

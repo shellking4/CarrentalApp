@@ -35,7 +35,7 @@
                         <li class="users">
                             <button>UTILISATEURS</button>
                             <ul>
-                                <li><a href="">TOUS</a></li>
+                                <li><a href="{{ route('users@dashboard') }}">TOUS</a></li>
                                 <li><a href="">AYANTS EMPRUNTÉ</a></li>
                                 <li><a href="">AYANTS LOUÉ</a></li>
                             </ul>

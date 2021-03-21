@@ -6,7 +6,7 @@
             <form action="{{ route('login') }}" method="post">
                 @csrf
                 <div class="mb-4">
-                    <label for="login" class="sr-only">Login</label>
+                    <label for="login" class="sr-only">Temps de Location(Nombre de jours)</label>
                     <input type="text" name="login" id="login" value="{{ old('login') }}" placeholder="Login" class="bg-white border-2 p-3 w-full rounded-lg @error('login') border-red-500 @enderror">
                     @error('login')
                         <p class="text-red-500 mt-2 text-sm">
