@@ -26,23 +26,23 @@
                     @endif
                     @if (count(auth()->user()->roles) == 2)
                         <li class="account">
+                            <button class="user_id">{{ auth()->user()->firstname }}  {{ auth()->user()->lastname }}</button>
                             <ul>
-                                <button><a href="#" class="user_id">{{ auth()->user()->firstname }}  {{ auth()->user()->lastname }}</a></button>
                                 <li><a href="{{ route('auth.user_rents') }}">LOCATIONS</a></li>
                                 <li><a href="{{ route('auth.user_free_rents') }}">EMPRUNTS</a></li>
                             </ul>
                         </li>
                         <li class="users">
+                            <button>UTILISATEURS</button>
                             <ul>
-                                <button>UTILISATEURS</button>
                                 <li><a href="">TOUS</a></li>
                                 <li><a href="">AYANTS EMPRUNTÉ</a></li>
                                 <li><a href="">AYANTS LOUÉ</a></li>
                             </ul>
                         </li>
                         <li class="cars">
-                            <ul>
-                                <button>VOITURES</button>
+                            <button>VOITURES</button>
+                            <ul>  
                                 <li><a href="{{ route('cars@dashboard') }}">VOITURES</a></li>
                                 <li><a href="{{ route('car_add') }}">AJOUTER VOITURE</a></li>
                             </ul>

@@ -205,7 +205,7 @@ h5, h4 {
     position: relative;
 }
 
-/*.cars {
+.cars {
     z-index: 99;
 }
 
@@ -215,7 +215,15 @@ h5, h4 {
 
 .account {
     z-index: 9999;
-}*/
+}
+
+.account button,
+.users button,
+.cars button {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
 
 .users ul {
     position: absolute;
@@ -231,13 +239,9 @@ h5, h4 {
     border-radius: 10px;
     opacity: 0;
     pointer-events: none;
-    transform: translateY(10px);
-    transition: all 0.5s ease;
+    transform: translateY(-10px);
+    transition: all 0.6s ease;
 } 
-
-.cars a {
-    z-index: 99999999999999999999999999999999999999999999999999999;
-}
 
 .account ul, 
 .cars ul {
@@ -254,7 +258,7 @@ h5, h4 {
     opacity: 0;
     pointer-events: none;
     transform: translateY(-10px);
-    transition: all 0.5s ease;
+    transition: all 0.6s ease;
 }
 
 /*.users li, 
@@ -282,7 +286,6 @@ h5, h4 {
     opacity: 1;
     background-color: #4F5757;
     pointer-events: all;
-    z-index: -2;
     transform: translateY(0px);
 }
 
