@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
         <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}" />
         <link rel="icon" href="{{ asset('images/theater-masks.png') }}" />
+        <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
     </head>
     <body class="bg-gray-400">
         <nav>
@@ -132,6 +133,7 @@
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
         <script src="{{ asset('js/script.js') }}"></script>
     </body>
 </html>

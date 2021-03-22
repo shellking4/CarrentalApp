@@ -25,6 +25,7 @@ class CreateCarsTable extends Migration
             $table->boolean('isRented')->default(false);
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id', 'fk_user')->references('id')->on('users');
+            $table->double('costIfRented')->nullable();
         });
     }
 

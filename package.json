@@ -1,0 +1,26 @@
+{
+  "name": "carrental",
+  "version": "1.0.0",
+  "description": "This is a js used in the project",
+  "main": "none",
+  "type": "module",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "sweetalert": "^2.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "DevCraft LLC",
+  "license": "MIT"
+}

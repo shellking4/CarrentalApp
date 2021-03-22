@@ -289,4 +289,6 @@ h5, h4 {
     transform: translateY(0px);
 }
 
-
+.rentSuccessMessage {
+    visibility: hidden;
+}

@@ -32,9 +32,12 @@ class HomeController extends Controller
 
     public function getUserRents()
     {
-        $rents = Auth::user()->rentedCars->where('isRented', true)->all();
+        $user = Auth::user();
+        $owedRentAmount = $user->owedRentAmount;
+        $rents = $user->rentedCars->where('isRented', true)->all();
         return view('parc.rents', [
-            'rents' => $rents
+            'rents' => $rents,
+            'owedRentAmount' => $owedRentAmount
         ]);
     }
 
@@ -45,24 +48,24 @@ class HomeController extends Controller
 
     public function freeRent(Car $car, FreeRentFormRequest $request)
     {
-        $locationTime = $request->locationTime;
         $user = User::find(Auth::user()->id);
         $user->rentedCars()->save($car);
         $car->isFreeRented = true;
         $car->save();
-        return redirect()->route('auth.user_free_rents');
+        return redirect()->route('auth.user_free_rents')->with('free_rent_success', 'Car successfully freely rented');
     }
 
     public function rent(Car $car, RentFormRequest $request)
     {
-        $locationTime = $request->locationTime;
+        $rentTime = $request->rentTime;
         $user = User::find(Auth::user()->id);
         $user->rentedCars()->save($car);
-        $user->owed_rent_amount = $car->price * $locationTime;
-        $user->save();
+        $car->costIfRented = $car->price * $rentTime;
         $car->isRented = true;
+        $user->owedRentAmount += $car->costIfRented;
         $car->save();
-        return redirect()->route('auth.user_rents');
+        $user->save();
+        return redirect()->route('auth.user_rents')->with('rent_success', 'Car successfully rented');
     }
 
     public function renderRentForm(Car $car)
@@ -77,5 +80,32 @@ class HomeController extends Controller
         return view('parc.freeRentForm', [
             'car' => $car
         ]);
+    }
+
+    public function sendRentedCarBack(Car $car)
+    {
+        $car->isRented = false;
+        $car->renter()->dissociate();
+        $car->costIfRented = null;
+        $car->save();
+        return redirect()->route('auth.user_rents');
+    }
+
+    public function sendFreeRentedCarBack(Car $car)
+    {
+        $car->isFreeRented = false;
+        $car->renter()->dissociate();
+        $car->save();
+        return redirect()->route('auth.user_free_rents');
+    }
+
+    public function sendRentSuccessMessage()
+    {
+        return view('parc.rentSuccess');
+    }
+
+    public function sendFreeRentSuccessMessage()
+    {
+        return view('parc.freeRentSuccess');
     }
 }

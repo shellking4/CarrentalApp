@@ -36,3 +36,7 @@ Route::post('/rent/{car}', [HomeController::class, 'rent'])->name('rent.proceed'
 Route::resource('policies', HomeController::class);
 Route::get('/rent/{car}/form', [HomeController::class, 'renderRentForm'])->name('rent_perform_view');
 Route::get('/free.rent/{car}/form', [HomeController::class, 'renderFreeRentForm'])->name('free_rent_perform_view');
+Route::post('/me/rents/send.back/{car}', [HomeController::class, 'sendRentedCarBack'])->name('rented_car_send_back');
+Route::post('/me/free.rents/send.back/{car}', [HomeController::class, 'sendFreeRentedCarBack'])->name('free_rented_car_send_back');
+Route::get('/me/rents/rent.success', [HomeController::class, 'sendRentSuccessMessage'])->name('rent.success.message');
+Route::get('/me/rents/free.rent.success', [HomeController::class, 'sendFreeRentSuccessMessage'])->name('free.rent.success.message');

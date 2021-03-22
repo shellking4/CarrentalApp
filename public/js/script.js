@@ -43,3 +43,33 @@ const topFunction = () => {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera Mini
 }
 
+const rentSuccessAlertDisplay = () => {
+    var element = document.querySelector('.rentSuccessMessage');
+    if (element) {
+        var price = element.innerHTML;
+        Swal.fire(
+            {
+                title: "SUCCÈS DE VOTRE PRÊT DE VOITURE. \n\n Montant actuel de vos prêts : " + price + "FCFA",
+                text: "Votre prêt de voiture a été réalisé avec succès Veuillez régler vos dus au moment de la récupération de la voiture au parc. \n Veuillez bien aussi rendre la voiture à temps pour éviter des complications inutiles",
+                icon: "success"
+            }
+        );
+    }
+}
+
+const freeRentSuccessAlertDisplay = () => {
+    var element = document.querySelector('.freeRentSuccessMessage');
+    if (element) {
+        Swal.fire(
+            {
+                title: "SUCCÈS DE VOTRE EMPRUNT DE VOITURE",
+                text: "Votre emprunt de voiture a été réalisé avec succès \n\n Veuillez rendre la voiture à temps pour éviter des complications inutiles",
+                icon: "success"
+            }
+        );
+    }
+}
+
+rentSuccessAlertDisplay();
+freeRentSuccessAlertDisplay();
+

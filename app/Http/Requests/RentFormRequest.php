@@ -24,15 +24,15 @@ class RentFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'location_time' => 'required|gt:0'
+            'rentTime' => 'required|gt:0'
         ];
     }
 
     public function messages()
     {
         return [
-            'location_time.required' => 'Veuillez entrer le temps que va durer votre location',
-            'location_time.gt' => 'Ce nombre doit être supérieur à zéro'
+            'rentTime.required' => 'Veuillez entrer le temps que va durer votre location',
+            'rentTime.gt' => 'Ce nombre doit être supérieur à zéro'
         ];
     }
 }

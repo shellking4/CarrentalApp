@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (session()->has('free_rent_success'))
+        <p class="freeRentSuccessMessage"></p>
+    @endif
     <div class="flex justify-center mt-5">
         <div class="w-8/12 bg-gray-700 p-6 rounded-lg">
             <h5 class="flex form-title text-white  text-center justify-center uppercase">MES EMPRUNTS DE VOITURES</h5>
@@ -23,12 +26,12 @@
                                 <h5><span class="libele">Nombre de places</span> : {{ $car->nbPlaces }}</h5>
                                 <h5><span class="libele">Prix</span> : {{ $car->price }} FCFA</h5>
                             </div>
+                            <form action="{{ route('free_rented_car_send_back', $car) }}" method="post" class="btn col-md-12 col-12">
+                                @csrf
+                                <button type="submit" class="btn mt-4 btn-secondary px-2">RENDRE CETTE VOITURE</button>
+                            </form>
                         </div>
                     </div>
-                    <form action="{{ route('free_rent_perform_view', $car) }}" method="post" class="btn mt-md-4 col-md-5 col-12">
-                        @csrf
-                        <button type="submit" class="btn mt-4 btn-warning px-2">RENDRE LA VOITURE</button>
-                    </form>
                 </div>
             @endforeach
         @else

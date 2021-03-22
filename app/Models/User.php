@@ -24,7 +24,8 @@ class User extends Authenticable
         'lastname',
         'email',
         'login',
-        'password'
+        'password',
+        'owedRentAmount'
     ];
 
     protected $casts = [

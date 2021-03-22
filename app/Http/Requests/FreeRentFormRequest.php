@@ -24,16 +24,16 @@ class FreeRentFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'location_time' => 'required|gt:0|max:2'
+            'rentTime' => 'required|gt:0|max:2'
         ];
     }
 
     public function messages()
     {
         return [
-            'location_time.required' => 'Veuillez entrer le temps que va durer votre location',
-            'location_time.gt' => 'Ce nombre doit être supérieur à zéro',
-            'location_time.max' => 'Nos prêts de voitures sont limités à seulement deux (02) jours'
+            'rentTime.required' => 'Veuillez entrer le temps que va durer votre location',
+            'rentTime.gt' => 'Ce nombre doit être supérieur à zéro',
+            'rentTime.max' => 'Nos prêts de voitures sont limités à seulement deux (02) jours'
         ];
     }
 }

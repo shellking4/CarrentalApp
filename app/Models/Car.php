@@ -24,11 +24,12 @@ class Car extends Model
         'nbPlaces',
         'price',
         'isFreeRented',
-        'isRented'
+        'isRented',
+        'costIfRented'
     ];
 
     public function renter()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

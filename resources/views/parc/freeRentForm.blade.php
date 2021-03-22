@@ -11,9 +11,9 @@
             <form action="{{ route('free_rent.proceed', $car) }}" method="post">
                 @csrf
                 <div class="mb-4">
-                    <label for="location_time" class="sr-only">Temps de Location(Nombre de jours)</label>
-                    <input type="number" name="location_time" id="location_time" value="{{ old('location_time') }}" placeholder="Durée de location (en jours)" class="bg-white border-2 p-3 w-full rounded-lg @error('location_time') border-red-500 @enderror">
-                    @error('location_time')
+                    <label for="rentTime" class="sr-only">Temps de Location(Nombre de jours)</label>
+                    <input type="number" name="rentTime" id="rentTime" value="{{ old('rentTime') }}" placeholder="Durée de location (en jours)" class="bg-white border-2 p-3 w-full rounded-lg @error('rentTime') border-red-500 @enderror">
+                    @error('rentTime')
                         <p id="error_message" class="text-red-500 mt-2 text-sm">
                             {{ $message }}
                         </p>

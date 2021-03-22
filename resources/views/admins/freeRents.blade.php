@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="container">
-        @if ($user->freeRentedCars->count())
+        @if ($user->rentedCars->count())
             @foreach($user->rentedCars as $car)
                 <div class="row mt-4 mr-md-4 mb-3 py-3">
                     <div class="col-11 col-md-10 offset-md-1">
