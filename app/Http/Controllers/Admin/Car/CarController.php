@@ -25,7 +25,7 @@ class CarController extends Controller
         ]);
     }
 
-    public function render_add_form()
+    public function renderAddForm()
     {
         return view('admins.add_car');
     }
@@ -47,7 +47,7 @@ class CarController extends Controller
         return redirect()->route('cars@dashboard');
     }
 
-    public function render_update_form(Car $car, Request $request)
+    public function renderUpdateForm(Car $car, Request $request)
     {
         $car = $request->car;
         return view('admins.update_car', [

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('login');
             $table->string('password');
             $table->text('roles')->nullable();
+            $table->double('owed_rent_amount')->nullable();
             $table->rememberToken();
         });
     }

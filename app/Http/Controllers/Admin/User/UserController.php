@@ -29,7 +29,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function render_update_form(User $user, Request $request)
+    public function renderUpdateForm(User $user, Request $request)
     {
         $user = $request->user;
         return view('admins.update_user', [

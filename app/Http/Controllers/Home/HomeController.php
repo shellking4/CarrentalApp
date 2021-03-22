@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FreeRentFormRequest;
+use App\Http\Requests\RentFormRequest;
 use App\Models\Car;
 use App\Models\User;
 use Barryvdh\DomPDF\PDF;
@@ -41,21 +43,39 @@ class HomeController extends Controller
         return view('parc.policies');
     }
 
-    public function freeRent(Car $car)
+    public function freeRent(Car $car, FreeRentFormRequest $request)
     {
+        $locationTime = $request->locationTime;
         $user = User::find(Auth::user()->id);
         $user->rentedCars()->save($car);
         $car->isFreeRented = true;
         $car->save();
-        return back();
+        return redirect()->route('auth.user_free_rents');
     }
 
-    public function rent(Car $car)
+    public function rent(Car $car, RentFormRequest $request)
     {
+        $locationTime = $request->locationTime;
         $user = User::find(Auth::user()->id);
         $user->rentedCars()->save($car);
+        $user->owed_rent_amount = $car->price * $locationTime;
+        $user->save();
         $car->isRented = true;
         $car->save();
-        return back();
+        return redirect()->route('auth.user_rents');
+    }
+
+    public function renderRentForm(Car $car)
+    {
+        return view('parc.rentForm', [
+            'car' => $car
+        ]);
+    }
+
+    public function renderFreeRentForm(Car $car)
+    {
+        return view('parc.freeRentForm', [
+            'car' => $car
+        ]);
     }
 }

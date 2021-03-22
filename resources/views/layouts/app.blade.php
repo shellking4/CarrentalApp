@@ -19,10 +19,14 @@
             <ul class="nav-links" id="app-nav">
                 @auth
                     @if (count(auth()->user()->roles) == 1)
-                        <li><a href="#" class="user_id">{{ auth()->user()->firstname }}  {{ auth()->user()->lastname }}</a></li>
-                        <li><a href="{{ route('home') }}">ACCUEIL</a></li>
-                        <li><a href="{{ route('auth.user_rents') }}">LOCATIONS</a></li>
-                        <li><a href="{{ route('auth.user_free_rents') }}">EMPRUNTS</a></li>
+                    <li class="account">
+                        <button class="user_id">{{ auth()->user()->firstname }}  {{ auth()->user()->lastname }}</button>
+                        <ul>
+                            <li><a href="{{ route('auth.user_rents') }}">LOCATIONS</a></li>
+                            <li><a href="{{ route('auth.user_free_rents') }}">EMPRUNTS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{ route('home') }}">ACCUEIL</a></li>
                     @endif
                     @if (count(auth()->user()->roles) == 2)
                         <li class="account">

@@ -66,7 +66,7 @@
                     @enderror
                 </div>
                 <div>
-                    <button type="submit" class="bg-blue-700 text-white px-4 py-3 form-title rounded font-medium w-full">S'INSCRIRE</button>
+                    <button type="submit" class="bg-gray-700 text-white px-4 py-3 form-title rounded font-medium w-full">S'INSCRIRE</button>
                 </div>
             </form>
         </div>

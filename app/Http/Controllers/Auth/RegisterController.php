@@ -22,7 +22,7 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function store_user(RegisterUserRequest $request)
+    public function storeUser(RegisterUserRequest $request)
     {
         $user = new User();
         $user->firstname = $request->firstname;
@@ -35,7 +35,7 @@ class RegisterController extends Controller
         return redirect()->route('home');
     }
 
-    public function store_admin(RegisterUserRequest $request)
+    public function storeAdmin(RegisterUserRequest $request)
     {
         $role = UserRole::ROLE_ADMIN;
         $user = new User();

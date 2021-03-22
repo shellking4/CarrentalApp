@@ -35,12 +35,12 @@
                                 </form>
                             @endguest
                             @auth
-                                <form action="{{ route('rent.proceed', $car) }}" method="post" class="btn mt-md-4 col-md-5 col-12">
+                                <form action="{{ route('rent_perform_view', $car) }}" method="get" class="btn mt-md-4 col-md-5 col-12">
                                     @csrf
                                     <button type="submit" class="btn mt-4 btn-success px-4">LOUER</button>
                                 </form>
                                 <div class="col-md-2"></div>
-                                 <form action="{{ route('free_rent.proceed', $car) }}" method="post" class="btn mt-md-4 col-md-5 col-12">
+                                <form action="{{ route('free_rent_perform_view', $car) }}" method="post" class="btn mt-md-4 col-md-5 col-12">
                                     @csrf
                                     <button type="submit" class="btn mt-4 btn-warning px-2">EMPRUNTER</button>
                                 </form>
@@ -55,6 +55,7 @@
             </div>
         @endif
     </div>
+    <div class="py-12"></div>
     <div class="py-12"></div>
     <div class="py-12"></div>
 @endsection

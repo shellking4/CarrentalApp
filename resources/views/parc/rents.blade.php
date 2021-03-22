@@ -26,6 +26,10 @@
                         </div>
                     </div>
                 </div>
+                <form action="{{ route('free_rent_perform_view', $car) }}" method="post" class="btn mt-md-4 col-md-5 col-12">
+                    @csrf
+                    <button type="submit" class="btn mt-4 btn-warning px-2">RENDRE LA VOITURE</button>
+                </form>
             @endforeach
         @else
             <div class="container-fluid mt-4">

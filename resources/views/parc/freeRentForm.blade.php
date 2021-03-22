@@ -3,12 +3,12 @@
 @section('content')
     <div class="flex justify-center my-5">
         <div class="w-5/12 bg-gray-700 p-6 rounded-lg">
-            <h5 class="flex form-title justify-center text-center text-white">DÉTAILS DE LA LOCATION DE VOITURE</h5>
+            <h5 class="flex form-title justify-center text-center text-white">DÉTAILS DE L'EMPRUNT</h5>
         </div>
     </div>
     <div class="flex justify-center mt-1">
-        <div class="md:w-5/12 w-10/12 bg-white p-8 mt-5 rounded-lg">
-            <form action="{{ route('rent.proceed', $car) }}" method="post">
+        <div class="md:w-5/12 w-10/12 bg-white p-6 mt-5 rounded-lg">
+            <form action="{{ route('free_rent.proceed', $car) }}" method="post">
                 @csrf
                 <div class="mb-4">
                     <label for="location_time" class="sr-only">Temps de Location(Nombre de jours)</label>
