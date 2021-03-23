@@ -132,21 +132,22 @@ const formatTimeLeft = (timeLeft, index) => {
 }
 
 
+const updateTime = (element, index) => {
+    var timeLeft = getTimeLeft(element, index);
+    formatTimeLeft(timeLeft, index);
+    if (timeLeft.total <= 0) {
+        clearInterval(timerInterVal);
+    }
+}
 
+let timerInterVal = null;
 const startTimer = (element, index) => {
-    let timerInterVal = null;
-    timerInterVal = setInterval(() => {
-        var timeLeft = getTimeLeft(element, index);
-        formatTimeLeft(timeLeft, index);
-        if (timeLeft.total <= 0) {
-            clearInterval(timerInterVal);
-        }
-    }, 1000);
+    updateTime(element, index);
+    timerInterVal = setInterval(updateTime(element, index), 1000);
 }
 
 var elements = document.querySelectorAll('.duration p');
 console.log(elements);
 elements.forEach((element, index) => {
-    console.log(index);
     startTimer(element, index);
 });
