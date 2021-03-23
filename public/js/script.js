@@ -88,15 +88,15 @@ const getTimeLimit = (element, index) => {
 }
 
 const getTimeLeft = (element, index) => {
-    var finishTime = getTimeLimit(element, index);
-    var now = new Date();
-    now = (Date.parse(now)) / 1000;
-    var timeLeft = finishTime - now
-    var days = Math.floor(timeLeft / 86400);
-    var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
-    var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600)) / 60);
-    var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+    var endTime = getTimeLimit(element, index);
+    var total = endTime - (Date.parse(new Date()) / 1000);
+    console.log(total);
+    var days = Math.floor(total / 86400);
+    var hours = Math.floor((total / 3600) % 24);
+    var minutes = Math.floor((total / 60) % 60);
+    var seconds = Math.floor(total % 60);
     return {
+        total,
         days,
         hours,
         minutes,
@@ -134,10 +134,11 @@ const formatTimeLeft = (timeLeft, index) => {
 
 
 const startTimer = (element, index) => {
-    const timerInterVal = setInterval(() => {
+    let timerInterVal = null;
+    timerInterVal = setInterval(() => {
         var timeLeft = getTimeLeft(element, index);
         formatTimeLeft(timeLeft, index);
-        if (timeLeft <= 0) {
+        if (timeLeft.total <= 0) {
             clearInterval(timerInterVal);
         }
     }, 1000);
