@@ -26,6 +26,7 @@ class CreateCarsTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id', 'fk_user')->references('id')->on('users');
             $table->double('costIfRented')->nullable();
+            $table->integer('locationDaysNumber')->nullable();
         });
     }
 

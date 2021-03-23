@@ -78,6 +78,7 @@ class CarController extends Controller
 
     public function delete(Car $car)
     {
+        $car->renter()->dissociate();
         $car->delete();
 
         return back();

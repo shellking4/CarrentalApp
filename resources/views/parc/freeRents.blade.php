@@ -12,6 +12,7 @@
     <div class="container">
         @if (count($freeRents))
             @foreach($freeRents as $car)
+                <div class="duration"><p>{{ $car->locationDaysNumber }}</p></div>
                 <div class="row mt-4 mr-md-4 mb-3 py-3">
                     <div class="col-11 col-md-10 offset-md-1">
                         <div class="row ml-4 item bg-dark text-white p-4 rounded-lg">
@@ -25,6 +26,14 @@
                                 <h5><span class="libele">Description</span> : {{ $car->description }}</h5>
                                 <h5><span class="libele">Nombre de places</span> : {{ $car->nbPlaces }}</h5>
                                 <h5><span class="libele">Prix</span> : {{ $car->price }} FCFA</h5>
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <div id="timer-{{ array_search($car, $freeRents) }}" class="flex-wrap timer d-flex justify-content-center">
+                                    <div class="days" class="align-items-center flex-column d-flex justify-content-center"></div>
+                                    <div class="hours" class="align-items-center flex-column d-flex justify-content-center"></div>
+                                    <div class="minutes" class="align-items-center flex-column d-flex justify-content-center"></div>
+                                    <div class="seconds" class="align-items-center flex-column d-flex justify-content-center"></div>
+                                </div>
                             </div>
                             <form action="{{ route('free_rented_car_send_back', $car) }}" method="post" class="btn col-md-12 col-12">
                                 @csrf
@@ -40,6 +49,7 @@
             </div>
         @endif
     </div>
+    <div class="py-12"></div>
     <div class="py-12"></div>
     <div class="py-12"></div>
 @endsection

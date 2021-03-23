@@ -41,8 +41,8 @@
                             <button>UTILISATEURS</button>
                             <ul>
                                 <li><a href="{{ route('users@dashboard') }}">TOUS</a></li>
-                                <li><a href="">AYANTS EMPRUNTÉ</a></li>
-                                <li><a href="">AYANTS LOUÉ</a></li>
+                                <li><a href="{{ route('users.with.free.rented.cars') }}">AYANTS EMPRUNTÉ</a></li>
+                                <li><a href="{{ route('users.with.rented.cars') }}">AYANTS LOUÉ</a></li>
                             </ul>
                         </li>
                         <li class="cars">

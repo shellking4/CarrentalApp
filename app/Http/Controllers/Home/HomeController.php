@@ -24,7 +24,11 @@ class HomeController extends Controller
 
     public function getUserFreeRents()
     {
-        $freeRents = Auth::user()->rentedCars->where('isFreeRented', true)->all();
+        $user = Auth::user();
+        if (!$user) {
+            return redirect()->route('login');
+        }
+        $freeRents = $user->rentedCars->where('isFreeRented', true)->all();
         return view('parc.freeRents', [
             'freeRents' => $freeRents
         ]);
@@ -33,8 +37,11 @@ class HomeController extends Controller
     public function getUserRents()
     {
         $user = Auth::user();
-        $owedRentAmount = $user->owedRentAmount;
+        if (!$user) {
+            return redirect()->route('login');
+        }
         $rents = $user->rentedCars->where('isRented', true)->all();
+        $owedRentAmount = $user->owedRentAmount;
         return view('parc.rents', [
             'rents' => $rents,
             'owedRentAmount' => $owedRentAmount
@@ -49,8 +56,12 @@ class HomeController extends Controller
     public function freeRent(Car $car, FreeRentFormRequest $request)
     {
         $user = User::find(Auth::user()->id);
+        if (!$user) {
+            return redirect()->route('login');
+        }
         $user->rentedCars()->save($car);
         $car->isFreeRented = true;
+        $car->locationDaysNumber = $request->rentTime;
         $car->save();
         return redirect()->route('auth.user_free_rents')->with('free_rent_success', 'Car successfully freely rented');
     }
@@ -59,8 +70,12 @@ class HomeController extends Controller
     {
         $rentTime = $request->rentTime;
         $user = User::find(Auth::user()->id);
+        if (!$user) {
+            return redirect()->route('login');
+        }
         $user->rentedCars()->save($car);
         $car->costIfRented = $car->price * $rentTime;
+        $car->locationDaysNumber = $request->rentTime;
         $car->isRented = true;
         $user->owedRentAmount += $car->costIfRented;
         $car->save();
@@ -87,6 +102,7 @@ class HomeController extends Controller
         $car->isRented = false;
         $car->renter()->dissociate();
         $car->costIfRented = null;
+        $car->locationDaysNumber = null;
         $car->save();
         return redirect()->route('auth.user_rents');
     }
@@ -97,15 +113,5 @@ class HomeController extends Controller
         $car->renter()->dissociate();
         $car->save();
         return redirect()->route('auth.user_free_rents');
-    }
-
-    public function sendRentSuccessMessage()
-    {
-        return view('parc.rentSuccess');
-    }
-
-    public function sendFreeRentSuccessMessage()
-    {
-        return view('parc.freeRentSuccess');
     }
 }

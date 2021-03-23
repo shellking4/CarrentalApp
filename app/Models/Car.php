@@ -25,7 +25,8 @@ class Car extends Model
         'price',
         'isFreeRented',
         'isRented',
-        'costIfRented'
+        'costIfRented',
+        'locationDaysNumber'
     ];
 
     public function renter()
