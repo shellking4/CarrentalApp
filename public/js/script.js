@@ -1,3 +1,5 @@
+let baseIdString = "timeLimit_";
+
 document.getElementById("year").innerHTML = new Date().getFullYear();
 
 const navSlide = () => {
@@ -75,20 +77,19 @@ rentSuccessAlertDisplay();
 freeRentSuccessAlertDisplay();
 
 // Timer methods
-const getTimeLimit = (element, index) => {
+const setTimeLimit = (element, index) => {
     // end date is defined here
+    var itemId = baseIdString + index;
     var duration = parseInt(element.innerHTML);
     var now = new Date();
     var ms = now.setDate(now.getDate() + duration);
     var endTime = new Date(ms);
-    var endTime = (Date.parse(endTime)) / 1000;
-    var itemId = "timeLimit_" + index;
     localStorage.setItem(itemId, endTime);
     return localStorage.getItem(itemId);
 }
 
 const getTimeLeft = (endTime) => {
-    var total = endTime - (Date.parse(new Date()) / 1000);
+    var total = (Date.parse(endTime) / 1000) - (Date.parse(new Date()) / 1000);
     console.log(total);
     var days = Math.floor(total / 86400);
     var hours = Math.floor((total / 3600) % 24);
@@ -141,12 +142,18 @@ const updateTime = (index, endTime) => {
 
 let timerInterVal = null;
 const startTimer = (element, index) => {
-    var endTime = getTimeLimit(element);
+    let endTime = null;
+    if (localStorage.getItem(baseIdString + index)) {
+        endTime = localStorage.getItem(baseIdString + index);
+    } else {
+        getTimeLeft(element, index);
+        endTime = localStorage.getItem(baseIdString + index);
+    }
+    console.log(endTime);
     timerInterVal = setInterval(updateTime, 1000, index, endTime);
 }
 
 var elements = window.document.querySelectorAll('.duration p');
-console.log(elements);
 elements.forEach((element, index) => {
     startTimer(element, index);
 });
