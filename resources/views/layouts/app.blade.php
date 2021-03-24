@@ -27,7 +27,9 @@
                             <li><a href="{{ route('auth.user_free_rents') }}">EMPRUNTS</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ route('home') }}">ACCUEIL</a></li>
+                    <li class="home">
+                        <a href="{{ route('home') }}">ACCUEIL</a>
+                    </li>
                     @endif
                     @if (count(auth()->user()->roles) == 2)
                         <li class="account">
@@ -35,6 +37,12 @@
                             <ul>
                                 <li><a href="{{ route('auth.user_rents') }}">LOCATIONS</a></li>
                                 <li><a href="{{ route('auth.user_free_rents') }}">EMPRUNTS</a></li>
+                                <li>
+                                    <form action="{{ route('logout') }}" class="logout text-white text-center" method="POST">
+                                        @csrf
+                                        <button type="submit">DÉCONNEXION</button>
+                                    </form>
+                                </li>
                             </ul>
                         </li>
                         <li class="users">
@@ -52,13 +60,13 @@
                                 <li><a href="{{ route('car_add') }}">AJOUTER VOITURE</a></li>
                             </ul>
                         <li>
-                        <li><a href="{{ route('home') }}">ACCUEIL</a></li>                        
+                        <li class="home"><a href="{{ route('home') }}">ACCUEIL</a></li>                     
                     @endif
                 @endauth
                 @guest
-                    <li><a href="{{ route('home') }}">ACCUEIL</a></li>
-                    <li><a href="{{ route('login') }}">CONNEXION</a></li>
-                    <li><a href="{{ route('user@register_view') }}">INSCRIPTION</a></li>
+                    <li class="homeLink"><a href="{{ route('home') }}">ACCUEIL</a></li>
+                    <li class="loginLink"><a href="{{ route('login') }}">CONNEXION</a></li>
+                    <li class="registerLink"><a href="{{ route('user@register_view') }}">INSCRIPTION</a></li>
                 @endguest
             </ul>
             <div class="burger">
