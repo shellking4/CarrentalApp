@@ -21,11 +21,9 @@
             <br>
             Chaque voiture de CaRRentAL à un prix de location défini pour une journée d'utilisation de la voiture.
             Pour louer une voiture l'utilisateur va remplir un formulaire sur lequel il indique le nombre de jours pendant lesquels il souhaite 
-            utiliser la voiture. La facture de location de la voiture lui est délivrée en fonction de son choix. Le clien CaRRentAL peut procéder directement au paiement des
-            frais qui s'imposent sur la plateforme, si tant est qu'il a un compte bancaire ou une carte de crédit ou autre chose pouvant l'aider au paiement de ces dus à la manière 
-            numérique. Le client peut aussi procéder au paiement de façon physique. Nous avons trois locaux où les clients peuvent se rendre s'il veulent effectuer leur paiement physiquement.
-            Une fois les paiements réglés le client peut maintenant se rendre dans le parc CaRRentAL situé au carrefour VanderCross afin de récupérer la voiture qu'il a louée.
-            Le service clientèle de CaRRentAL est consititué de charmantes personnes gentilles, très accueillantes, et très à l'écoute des clients afin de les satisfaire et les aider pour tout leur soucis.
+            utiliser la voiture. Le total du montant de ses locations est alors mis à jour. Le client CaRRentAL paie ses dus de façon physique au moment de la récupération de la
+            voiture dans les parcs CaRRentAL. Une fois les paiements réglés le client peut maintenant récupérer la voiture qu'il a louée.
+            Le service clientèle de CaRRentAL est consititué de charmantes personnes gentilles, très accueillantes, et très à l'écoute des clients afin de les satisfaire et les aider pour tous leurs eventuels soucis.
             Une fois la durée d'utilisation de la voiture terminée, le client devra se connecter sur la plateforme et rendre la voiture là-bas avant de la ramener dans le parc CaRRentAL.
             <br>
             <h4 style="font-weight: bold; text-align: center; margin-bottom: 14px;">Politique de prêt de voitures</h4>
