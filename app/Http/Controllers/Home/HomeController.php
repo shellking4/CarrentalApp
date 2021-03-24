@@ -7,10 +7,9 @@ use App\Http\Requests\FreeRentFormRequest;
 use App\Http\Requests\RentFormRequest;
 use App\Models\Car;
 use App\Models\User;
-use Barryvdh\DomPDF\PDF as PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use DateInterval;
 use DateTime;
-use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -132,7 +131,7 @@ class HomeController extends Controller
     public function pdfview(Request $request)
     {
         if ($request->has('download')) {
-            $pdf = PDF::loadView('parc.policies');
+            $pdf = PDF::loadView('parc.policiesView');
             return $pdf->download('policies.pdf');
         }
         return view('parc.policies');
