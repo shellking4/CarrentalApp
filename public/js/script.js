@@ -87,9 +87,9 @@ const getTimeLimit = (element, index) => {
     return localStorage.getItem(itemId);
 }
 
-const getTimeLeft = (element, index) => {
+const getTimeLeft = (element, index, currentDate) => {
     var endTime = getTimeLimit(element, index);
-    var total = endTime - (Date.parse(new Date()) / 1000);
+    var total = endTime - (Date.parse(currentDate) / 1000);
     console.log(total);
     var days = Math.floor(total / 86400);
     var hours = Math.floor((total / 3600) % 24);
@@ -132,8 +132,8 @@ const formatTimeLeft = (timeLeft, index) => {
 }
 
 
-const updateTime = (element, index) => {
-    var timeLeft = getTimeLeft(element, index);
+const updateTime = (element, index, currentDate) => {
+    var timeLeft = getTimeLeft(element, index, currentDate);
     formatTimeLeft(timeLeft, index);
     if (timeLeft.total <= 0) {
         clearInterval(timerInterVal);
@@ -142,11 +142,11 @@ const updateTime = (element, index) => {
 
 let timerInterVal = null;
 const startTimer = (element, index) => {
-    updateTime(element, index);
-    timerInterVal = setInterval(updateTime(element, index), 1000);
+    var now = new Date();
+    timerInterVal = setInterval(updateTime, 0, element, index, now);
 }
 
-var elements = document.querySelectorAll('.duration p');
+var elements = window.document.querySelectorAll('.duration p');
 console.log(elements);
 elements.forEach((element, index) => {
     startTimer(element, index);
