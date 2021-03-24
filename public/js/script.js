@@ -73,18 +73,24 @@ const freeRentSuccessAlertDisplay = () => {
     }
 }
 
+const endOfCarUsageAlert = () => {
+    Swal.fire(
+        {
+            title: "TEMPS D'USAGE DE VOITURE ÉCOULÉ",
+            text: "Votre temps d'utilisation de cette voiture est écoulé. \n\n Veuillez rendre promptement la voiture au parc CaRRentAL le plus proche",
+            icon: "warning"
+        }
+    );
+}
+
 rentSuccessAlertDisplay();
 freeRentSuccessAlertDisplay();
 
 // Timer methods
-const setTimeLimit = (element, index) => {
-    // end date is defined here
-    var itemId = baseIdString + index;
-    var duration = parseInt(element.innerHTML);
-    var now = new Date();
-    var ms = now.setDate(now.getDate() + duration);
-    var endTime = new Date(ms);
-    localStorage.setItem(itemId, endTime);
+const getTimeLimitFromServer = (element) => {
+    var endTimeFromServer = element.innerHTML;
+    var endTime = new Date(endTimeFromServer);
+    return endTime;
 }
 
 const getTimeLeft = (endTime) => {
@@ -136,23 +142,18 @@ const updateTime = (endTime, index) => {
     formatTimeLeft(timeLeft, index);
     if (timeLeft.total <= 0) {
         clearInterval(timerInterVal);
+        endOfCarUsageAlert();
     }
 }
 
 let timerInterVal = null;
 const startTimer = (element, index) => {
-    let endTime = null;
-    if (localStorage.getItem(baseIdString + index)) {
-        endTime = localStorage.getItem(baseIdString + index);
-    } else {
-        setTimeLimit(element, index);
-        endTime = localStorage.getItem(baseIdString + index);
-    }
+    let endTime = getTimeLimitFromServer(element);
     console.log(endTime);
     timerInterVal = setInterval(updateTime, 1000, endTime, index);
 }
 
-var elements = document.querySelectorAll('.duration p');
+var elements = document.querySelectorAll('.endOfRent');
 elements.forEach((element) => {
     console.log(elements);
     var index = parseInt(element.parentElement.children[0].innerHTML);

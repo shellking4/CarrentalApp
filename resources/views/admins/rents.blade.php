@@ -11,7 +11,7 @@
             @foreach($rents as $car)
                 <div class="duration">
                     <h6 class="duration">{{ array_search($car, $rents) }}</h6>
-                    <p class="duration">{{ $car->locationDaysNumber }}</p>
+                    <p class="endOfRent">{{ $car->endOfRentDate }}</p>
                 </div>
                 <div class="row mt-4 mr-md-4 mb-3 py-3">
                     <div class="col-11 col-md-10 offset-md-1">

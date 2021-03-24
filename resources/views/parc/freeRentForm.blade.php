@@ -20,7 +20,7 @@
                     @enderror
                 </div>
                 <div>
-                    <button type="submit" class="bg-blue-700 text-center text-white px-4 py-3 mt-5 rounded form-title font-medium w-full">PROCÉDER À LA LOCATION</button>
+                    <button type="submit" class="bg-blue-700 text-center text-white px-4 py-3 mt-5 rounded form-title font-medium w-full">PROCÉDER À L'EMPRUNT</button>
                 </div>
             </form>
         </div>

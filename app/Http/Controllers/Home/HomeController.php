@@ -8,6 +8,8 @@ use App\Http\Requests\RentFormRequest;
 use App\Models\Car;
 use App\Models\User;
 use Barryvdh\DomPDF\PDF;
+use DateInterval;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,6 +38,8 @@ class HomeController extends Controller
 
     public function getUserRents()
     {
+        /*$date = new DateTime();
+        dd(date('c', $date->getTimestamp()));*/
         $user = Auth::user();
         if (!$user) {
             return redirect()->route('login');
@@ -62,6 +66,11 @@ class HomeController extends Controller
         $user->rentedCars()->save($car);
         $car->isFreeRented = true;
         $car->locationDaysNumber = $request->rentTime;
+        $now = new DateTime();
+        $dateInterval = DateInterval::createFromDateString("$car->locationDaysNumber days");
+        $now->add($dateInterval);
+        $endOfRent = date('c', $now->getTimestamp());
+        $car->endOfRentDate = $endOfRent;
         $car->save();
         return redirect()->route('auth.user_free_rents')->with('free_rent_success', 'Car successfully freely rented');
     }
@@ -78,6 +87,11 @@ class HomeController extends Controller
         $car->locationDaysNumber = $request->rentTime;
         $car->isRented = true;
         $user->owedRentAmount += $car->costIfRented;
+        $now = new DateTime();
+        $dateInterval = DateInterval::createFromDateString("$car->locationDaysNumber days");
+        $now->add($dateInterval);
+        $endOfRent = date('c', $now->getTimestamp());
+        $car->endOfRentDate = $endOfRent;
         $car->save();
         $user->save();
         return redirect()->route('auth.user_rents')->with('rent_success', 'Car successfully rented');

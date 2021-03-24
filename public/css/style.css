@@ -261,7 +261,6 @@ h5, h4 {
     transition: all 0.6s ease;
 }
 
-<<<<<<< HEAD
 .account button:hover,
 .users button:hover,
 .cars button:hover,
@@ -280,9 +279,6 @@ h5, h4 {
 .registerLink a:hover {
     color: rgb(26, 165, 170);
 }
-=======
-
->>>>>>> timerSetupTest
 
 .users li {
     width: 100%;
@@ -328,5 +324,9 @@ h5, h4 {
 }
 
 .duration {
+    visibility: hidden;
+}
+
+.endOfRent {
     visibility: hidden;
 }
