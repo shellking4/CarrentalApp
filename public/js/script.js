@@ -77,16 +77,14 @@ rentSuccessAlertDisplay();
 freeRentSuccessAlertDisplay();
 
 // Timer methods
-const setTimeLimit = (element) => {
+const setTimeLimit = (element, index) => {
     // end date is defined here
-    var index = parseInt(element.parentElement.children[0].innerHTML);
     var itemId = baseIdString + index;
     var duration = parseInt(element.innerHTML);
     var now = new Date();
     var ms = now.setDate(now.getDate() + duration);
     var endTime = new Date(ms);
     localStorage.setItem(itemId, endTime);
-    return index;
 }
 
 const getTimeLeft = (endTime) => {
@@ -142,13 +140,12 @@ const updateTime = (endTime, index) => {
 }
 
 let timerInterVal = null;
-const startTimer = (element) => {
+const startTimer = (element, index) => {
     let endTime = null;
-    let index = null;
     if (localStorage.getItem(baseIdString + index)) {
         endTime = localStorage.getItem(baseIdString + index);
     } else {
-        index = setTimeLimit(element);
+        setTimeLimit(element, index);
         endTime = localStorage.getItem(baseIdString + index);
     }
     console.log(endTime);
@@ -158,6 +155,6 @@ const startTimer = (element) => {
 var elements = document.querySelectorAll('.duration p');
 elements.forEach((element) => {
     console.log(elements);
-    console.log(element.parentElement.children[0]);
-    startTimer(element);
+    var index = parseInt(element.parentElement.children[0].innerHTML);
+    startTimer(element, index);
 });
