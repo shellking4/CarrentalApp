@@ -131,8 +131,6 @@ const formatTimeLeft = (timeLeft, index) => {
 
 }
 
-<<<<<<< HEAD
-=======
 
 const updateTime = (index, endTime) => {
     var timeLeft = getTimeLeft(endTime);
@@ -143,7 +141,6 @@ const updateTime = (index, endTime) => {
 }
 
 let timerInterVal = null;
->>>>>>> timerSetupTest
 const startTimer = (element, index) => {
     let endTime = null;
     if (localStorage.getItem(baseIdString + index)) {
