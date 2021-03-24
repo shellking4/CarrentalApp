@@ -1,3 +1,5 @@
+let baseIdString = "timeLimit_";
+
 document.getElementById("year").innerHTML = new Date().getFullYear();
 
 const navSlide = () => {
@@ -75,28 +77,26 @@ rentSuccessAlertDisplay();
 freeRentSuccessAlertDisplay();
 
 // Timer methods
-const getTimeLimit = (element, index) => {
+const setTimeLimit = (element, index) => {
     // end date is defined here
+    var itemId = baseIdString + index;
     var duration = parseInt(element.innerHTML);
     var now = new Date();
     var ms = now.setDate(now.getDate() + duration);
     var endTime = new Date(ms);
-    var endTime = (Date.parse(endTime)) / 1000;
-    var itemId = "timeLimit_" + index;
     localStorage.setItem(itemId, endTime);
     return localStorage.getItem(itemId);
 }
 
-const getTimeLeft = (element, index) => {
-    var finishTime = getTimeLimit(element, index);
-    var now = new Date();
-    now = (Date.parse(now)) / 1000;
-    var timeLeft = finishTime - now
-    var days = Math.floor(timeLeft / 86400);
-    var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
-    var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600)) / 60);
-    var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+const getTimeLeft = (endTime) => {
+    var total = (Date.parse(endTime) / 1000) - (Date.parse(new Date()) / 1000);
+    console.log(total);
+    var days = Math.floor(total / 86400);
+    var hours = Math.floor((total / 3600) % 24);
+    var minutes = Math.floor((total / 60) % 60);
+    var seconds = Math.floor(total % 60);
     return {
+        total,
         days,
         hours,
         minutes,
@@ -131,19 +131,32 @@ const formatTimeLeft = (timeLeft, index) => {
 
 }
 
-const startTimer = (element, index) => {
-    const timerInterVal = setInterval(() => {
-        var timeLeft = getTimeLeft(element, index);
-        formatTimeLeft(timeLeft, index);
-        if (timeLeft <= 0) {
-            clearInterval(timerInterVal);
-        }
-    }, 1000);
+<<<<<<< HEAD
+=======
+
+const updateTime = (index, endTime) => {
+    var timeLeft = getTimeLeft(endTime);
+    formatTimeLeft(timeLeft, index);
+    if (timeLeft.total <= 0) {
+        clearInterval(timerInterVal);
+    }
 }
 
-var elements = document.querySelectorAll('.duration p');
-console.log(elements);
+let timerInterVal = null;
+>>>>>>> timerSetupTest
+const startTimer = (element, index) => {
+    let endTime = null;
+    if (localStorage.getItem(baseIdString + index)) {
+        endTime = localStorage.getItem(baseIdString + index);
+    } else {
+        getTimeLeft(element, index);
+        endTime = localStorage.getItem(baseIdString + index);
+    }
+    console.log(endTime);
+    timerInterVal = setInterval(updateTime, 1000, index, endTime);
+}
+
+var elements = window.document.querySelectorAll('.duration p');
 elements.forEach((element, index) => {
-    console.log(index);
     startTimer(element, index);
 });
