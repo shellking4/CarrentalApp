@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="flex justify-center mt-5">
-        <div class="w-8/12 bg-white p-6 rounded-lg">
-            <h5 class="flex justify-center">UTILISATEURS AYANT EMPRUNTÉ DE VOITURES</h5>
+        <div class="w-8/12 theme-ground p-6 rounded-lg">
+            <h5 class="flex text-white justify-center">UTILISATEURS AYANT EMPRUNTÉ DE VOITURES</h5>
         </div>
     </div>
     <div class="container-fluid">

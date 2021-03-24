@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex justify-center my-5">
-        <div class="w-5/12 bg-gray-700 p-6 rounded-lg">
+        <div class="w-5/12 theme-ground p-6 rounded-lg">
             <h5 class="flex form-title justify-center text-center text-white">DÉTAILS DE LA LOCATION DE VOITURE</h5>
         </div>
     </div>
@@ -20,7 +20,7 @@
                     @enderror
                 </div>
                 <div>
-                    <button type="submit" class="bg-blue-700 text-center text-white px-4 py-3 mt-5 rounded form-title font-medium w-full">PROCÉDER À LA LOCATION</button>
+                    <button type="submit" class="theme-ground text-center text-white px-4 py-3 mt-5 rounded form-title font-medium w-full">PROCÉDER À LA LOCATION</button>
                 </div>
             </form>
         </div>

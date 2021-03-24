@@ -25,6 +25,12 @@
                         <ul>
                             <li><a href="{{ route('auth.user_rents') }}">LOCATIONS</a></li>
                             <li><a href="{{ route('auth.user_free_rents') }}">EMPRUNTS</a></li>
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit">DÉCONNEXION</button>
+                                </form>
+                            </li>
                         </ul>
                     </li>
                     <li class="home">

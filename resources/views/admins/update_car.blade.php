@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex justify-center my-5">
-        <div class="w-5/12 bg-gray-700 p-6 rounded-lg">
+        <div class="w-5/12 theme-ground p-6 rounded-lg">
             <h5 class="flex justify-center form-title text-center text-white">MISE À JOUR DES INFORMATIONS VOITURE</h5>
         </div>
     </div>
@@ -71,7 +71,7 @@
                     @enderror
                 </div>
                 <div>
-                    <button type="submit" class="bg-green-700 text-white text-center form-title px-4 py-3 rounded font-medium fontweight-bolder w-full">ENREGISTRER</button>
+                    <button type="submit" class="theme-ground text-white text-center form-title px-4 py-3 rounded font-medium fontweight-bolder w-full">ENREGISTRER</button>
                 </div>
             </form>
         </div>

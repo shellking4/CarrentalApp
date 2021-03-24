@@ -42,3 +42,4 @@ Route::get('/me/rents/rent.success', [HomeController::class, 'sendRentSuccessMes
 Route::get('/me/rents/free.rent.success', [HomeController::class, 'sendFreeRentSuccessMessage'])->name('free.rent.success.message');
 Route::get('/dashboard/users/with.rented.cars/index', [UserController::class, 'getUserWithRentedCars'])->name('users.with.rented.cars');
 Route::get('/dashboard/users/with.free.rented.cars/index', [UserController::class, 'getUserWithFreeRentedCars'])->name('users.with.free.rented.cars');
+Route::get('/download/platform.policies/pdfview', [HomeController::class, 'pdfview'])->name('pdfview');

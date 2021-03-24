@@ -7,9 +7,10 @@ use App\Http\Requests\FreeRentFormRequest;
 use App\Http\Requests\RentFormRequest;
 use App\Models\Car;
 use App\Models\User;
-use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\PDF as PDF;
 use DateInterval;
 use DateTime;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,8 +39,6 @@ class HomeController extends Controller
 
     public function getUserRents()
     {
-        /*$date = new DateTime();
-        dd(date('c', $date->getTimestamp()));*/
         $user = Auth::user();
         if (!$user) {
             return redirect()->route('login');
@@ -128,5 +127,14 @@ class HomeController extends Controller
         $car->locationDaysNumber = null;
         $car->save();
         return redirect()->route('auth.user_free_rents');
+    }
+
+    public function pdfview(Request $request)
+    {
+        if ($request->has('download')) {
+            $pdf = PDF::loadView('parc.policies');
+            return $pdf->download('policies.pdf');
+        }
+        return view('parc.policies');
     }
 }

@@ -321,3 +321,8 @@ h5, h4 {
 .theme-ground {
    background-color: #193240
 }
+
+.download-link {
+    text-decoration: none;
+    font-family: prata;
+}

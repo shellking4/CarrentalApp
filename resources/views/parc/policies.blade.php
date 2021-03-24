@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex justify-center mt-5">
-        <div class="w-8/12 bg-gray-700 p-6 rounded-lg">
+        <div class="w-8/12 theme-ground p-6 rounded-lg">
             <h5 class="flex form-title text-white text-center justify-center">NOTRE POLITIQUE ET CONFIDENTIALITÉS</h5>
         </div>
     </div>
@@ -37,6 +37,11 @@
                 Nous sommes réellement engagés dans la protection de vos données utilisateurs. Que ce soit vos mots de passe, vos numeros de cartes de crédit ou de cartes bancaires.
                 Ces informations font l'objet d'une sécurité sans faille dans notre système informatique. Aucune information d'un utilisateur n'est partagée sans son approbation.
             </p>
+        </div>
+    </div>
+    <div class="flex justify-center mt-3">
+        <div class="md:w-12/12 w-10/12 p-6 rounded-lg text-center justify-center">
+            <button class="btn text-center mt-4 theme-ground"><a class="text-white download-link" href="{{ route('pdfview', ['download' => 'pdf']) }}">TÉLÉCHARGER CE DOCUMENT ET LE LIRE PLUS TARD</a></button>
         </div>
     </div>
     <div class="py-12"></div>

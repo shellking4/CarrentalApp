@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex justify-center mt-5">
-        <div class="w-8/12 bg-gray-700 p-6 rounded-lg">
+        <div class="w-8/12 theme-ground p-6 rounded-lg">
             <h5 class="flex form-title text-white  text-center justify-center uppercase">EMPRUNTS DE VOITURES DE L'UTILISATEUR {{ $user->firstname }}  {{ $user->lastname }}</h5>
         </div>
     </div>
@@ -26,9 +26,11 @@
                                 <h5><span class="libele">Description</span> : {{ $car->description }}</h5>
                                 <h5><span class="libele">Nombre de places</span> : {{ $car->nbPlaces }}</h5>
                                 <h5><span class="libele">Prix</span> : {{ $car->price }} FCFA</h5>
+                                <h5><span class="libele">Nombre de jours d'usage</span> : {{ $car->locationDaysNumber }} Jours</h5>
                             </div>
                             <div class="col-md-12">
-                                <div id="timer-{{ array_search($car, $rents) }}" class="flex-wrap timer d-flex justify-content-center">
+                                <h5 class="text-center my-4">TEMPS D'USAGE RESTANT</h5>
+                                <div id="timer-{{ array_search($car, $freeRents) }}" class="flex-wrap timer d-flex justify-content-center">
                                     <div class="days" class="align-items-center flex-column d-flex justify-content-center"></div>
                                     <div class="hours" class="align-items-center flex-column d-flex justify-content-center"></div>
                                     <div class="minutes" class="align-items-center flex-column d-flex justify-content-center"></div>

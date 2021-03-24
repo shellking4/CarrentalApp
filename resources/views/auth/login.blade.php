@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div>
-                    <button type="submit" class="bg-blue-700 text-white px-4 py-3 mt-5 rounded form-title font-medium w-full">SE CONNECTER</button>
+                    <button type="submit" class="theme-ground text-white px-4 py-3 mt-5 rounded form-title font-medium w-full">SE CONNECTER</button>
                 </div>
             </form>
         </div>
