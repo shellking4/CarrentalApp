@@ -13,7 +13,10 @@
         @if (count($rents))
             @foreach($rents as $car)
                 <div class="row mt-4 md:mr-6 mb-3 py-3">
-                    <div class="duration"><p>{{ $car->locationDaysNumber }}</p></div>
+                    <div class="duration">
+                        <h6 class="duration">{{ array_search($car, $rents) }}</h6>
+                        <p class="duration">{{ $car->locationDaysNumber }}</p>
+                    </div>
                     <div class="col-11 col-md-10 offset-md-1">
                         <div class="row ml-4 item bg-dark text-white p-4 rounded-lg">
                             <div class="col-12 col-md-6 p-4">

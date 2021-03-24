@@ -77,15 +77,16 @@ rentSuccessAlertDisplay();
 freeRentSuccessAlertDisplay();
 
 // Timer methods
-const setTimeLimit = (element, index) => {
+const setTimeLimit = (element) => {
     // end date is defined here
+    var index = parseInt(element.parentElement.children[0].innerHTML);
     var itemId = baseIdString + index;
     var duration = parseInt(element.innerHTML);
     var now = new Date();
     var ms = now.setDate(now.getDate() + duration);
     var endTime = new Date(ms);
     localStorage.setItem(itemId, endTime);
-    return localStorage.getItem(itemId);
+    return index;
 }
 
 const getTimeLeft = (endTime) => {
@@ -132,7 +133,7 @@ const formatTimeLeft = (timeLeft, index) => {
 }
 
 
-const updateTime = (index, endTime) => {
+const updateTime = (endTime, index) => {
     var timeLeft = getTimeLeft(endTime);
     formatTimeLeft(timeLeft, index);
     if (timeLeft.total <= 0) {
@@ -141,19 +142,22 @@ const updateTime = (index, endTime) => {
 }
 
 let timerInterVal = null;
-const startTimer = (element, index) => {
+const startTimer = (element) => {
     let endTime = null;
+    let index = null;
     if (localStorage.getItem(baseIdString + index)) {
         endTime = localStorage.getItem(baseIdString + index);
     } else {
-        getTimeLeft(element, index);
+        index = setTimeLimit(element);
         endTime = localStorage.getItem(baseIdString + index);
     }
     console.log(endTime);
-    timerInterVal = setInterval(updateTime, 1000, index, endTime);
+    timerInterVal = setInterval(updateTime, 1000, endTime, index);
 }
 
-var elements = window.document.querySelectorAll('.duration p');
-elements.forEach((element, index) => {
-    startTimer(element, index);
+var elements = document.querySelectorAll('.duration p');
+elements.forEach((element) => {
+    console.log(elements);
+    console.log(element.parentElement.children[0]);
+    startTimer(element);
 });
