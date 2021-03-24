@@ -131,8 +131,6 @@ const formatTimeLeft = (timeLeft, index) => {
 
 }
 
-
-
 const startTimer = (element, index) => {
     const timerInterVal = setInterval(() => {
         var timeLeft = getTimeLeft(element, index);

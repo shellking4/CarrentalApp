@@ -171,6 +171,10 @@ h5, h4 {
     z-index: 4;
 }
 
+.logout {
+    font-family: prata;
+    font-size: 13.5px;
+}
 
 .libele {
     text-decoration: underline;

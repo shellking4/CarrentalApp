@@ -28,7 +28,7 @@ class HomeController extends Controller
         if (!$user) {
             return redirect()->route('login');
         }
-        $freeRents = $user->rentedCars->where('isFreeRented', true)->all();
+        $freeRents = $user->rentedCars->where('isFreeRented', true)->values()->all();
         return view('parc.freeRents', [
             'freeRents' => $freeRents
         ]);
@@ -40,7 +40,7 @@ class HomeController extends Controller
         if (!$user) {
             return redirect()->route('login');
         }
-        $rents = $user->rentedCars->where('isRented', true)->all();
+        $rents = $user->rentedCars->where('isRented', true)->values()->all();
         $owedRentAmount = $user->owedRentAmount;
         return view('parc.rents', [
             'rents' => $rents,
@@ -111,6 +111,7 @@ class HomeController extends Controller
     {
         $car->isFreeRented = false;
         $car->renter()->dissociate();
+        $car->locationDaysNumber = null;
         $car->save();
         return redirect()->route('auth.user_free_rents');
     }
