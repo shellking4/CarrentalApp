@@ -5,12 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>CaRRentAL</title>
+        <link rel="stylesheet" href="{{ asset('css/all-ftws.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-        <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}" />
-        <link rel="icon" href="{{ asset('images/theater-masks.png') }}" />
         <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
+        <link rel="icon" href="{{ asset('images/contao.svg') }}" />
     </head>
     <body class="bg-gray-400">
         <nav>
@@ -144,9 +144,10 @@
             @endauth
             <button onClick="topFunction()" id="myBtn" title="Haut de Page"><span class="fas fa-chevron-circle-up fa-2x"></span></button>
         </footer>
+        <script src="{{ asset('js/all-ftws.min.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
         <script src="{{ asset('js/script.js') }}"></script>
     </body>
