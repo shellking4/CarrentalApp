@@ -19,7 +19,7 @@ nav {
     justify-content: space-around;
     align-items: center;
     min-height: 8vh;
-    background-color: #4F5757;
+    background-color: #193240;
     padding: 20px;
 }
 
@@ -83,7 +83,7 @@ nav {
         right: 0px;
         height: 92vh;
         top: 8vh;
-        background-color:#4F5757;
+        background-color: #193240;
         display: flex;
         border-radius: 15px;
         flex-direction: column;
@@ -129,29 +129,16 @@ nav {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-.footer {
-    background-color: darkblue;
-}
-
-.glass {
-  background: white;
-  background: linear-gradient(
-    to right bottom,
-    rgba(82, 74, 74, 0.7),
-    rgba(32, 27, 27, 0)
-  );
-}
 
 .copyrightLayout {
   background: rgb(1, 1, 20);
-  padding-bottom: 70px;
+  padding-bottom: 80px;
 }
 
 .copyright {
   font-size: 15px;
   font-family: prata;
 }
-
 
 h5, h4 {
     font-family: prata;
@@ -196,7 +183,7 @@ h5, h4 {
     z-index: 99;
     border: none;
     outline: none;
-    color: #5C5C5C;
+    color: #193240;
     cursor: pointer;
     font-size: 18px;
 }
@@ -227,7 +214,7 @@ h5, h4 {
 
 .users ul {
     position: absolute;
-    background-color: #4F5757;
+    background-color: #193240;
     padding-top: 20px;
     width: 300px;
     height: 200px;
@@ -246,7 +233,7 @@ h5, h4 {
 .account ul, 
 .cars ul {
     position: absolute;
-    background-color: #4F5757;
+    background-color: #193240;
     width: 250px;
     height: 150px;
     margin-top: 40px;
@@ -293,7 +280,7 @@ h5, h4 {
 .account button:focus + ul, 
 .cars button:focus + ul {
     opacity: 1;
-    background-color: #4F5757;
+    background-color:  #193240;
     visibility: initial;
     transform: translateY(0px);
 }
@@ -329,4 +316,8 @@ h5, h4 {
 
 .endOfRent {
     visibility: hidden;
+}
+
+.theme-ground {
+   background-color: #193240
 }

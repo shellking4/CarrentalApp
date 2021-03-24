@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex justify-center mt-5">
-        <div class="w-8/12 bg-gray-700 p-6 rounded-lg">
+        <div class="w-8/12 theme-ground p-6 rounded-lg">
             <h5 class="flex form-title text-white text-center justify-center">VOITURES DISPONIBLES DANS LE PARC</h5>
         </div>
     </div>

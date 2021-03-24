@@ -32,10 +32,14 @@ class CarController extends Controller
 
     public function add(StoreCarRequest $request)
     {
-        $imagePath = $request->file('car_image');
-        $imageName = $imagePath->getClientOriginalName();
-        $path = $request->file('car_image')->storeAs('car_images', $imageName, 'public');
-        $image = '/storage/' . $path;
+        if ($request->file('car_image') == null) {
+            $image = '/storage/car_images/car8.jpeg';
+        } else {
+            $imagePath = $request->file('car_image');
+            $imageName = $imagePath->getClientOriginalName();
+            $path = $request->file('car_image')->storeAs('car_images', $imageName, 'public');
+            $image = '/storage/' . $path;
+        }
         Car::create([
             'model' => $request->model,
             'clearName' => $request->clearname,
