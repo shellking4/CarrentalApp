@@ -46,7 +46,10 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->login = $request->login;
         $user->save();
-        return redirect()->route('users@dashboard');
+        if (!$user->wasChanged()) {
+            return redirect()->route('users@dashboard');
+        }
+        return redirect()->route('users@dashboard')->with('update_success', "successfully updated user");
     }
 
     public function delete(User $user)
@@ -57,7 +60,7 @@ class UserController extends Controller
             $car->save();
         }
         $user->delete();
-        return redirect()->route('users@dashboard');
+        return redirect()->route('users@dashboard')->with('delete_success', "successfully deleted user");
     }
 
     public function getUserFreeRents(User $user)

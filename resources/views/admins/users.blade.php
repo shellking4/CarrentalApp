@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (session()->has('update_success'))
+        <p class="update-success"></p>
+    @endif
+    @if (session()->has('delete_success'))
+        <p class="delete-success"></p>
+    @endif
     <div class="flex justify-center mt-5">
         <div class="w-8/12 theme-ground p-6 rounded-lg">
             <h5 class="flex text-white justify-center">UTILISATEURS CARRENTAL</h5>

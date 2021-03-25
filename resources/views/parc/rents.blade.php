@@ -43,7 +43,7 @@
                             </div>
                             <form action="{{ route('rented_car_send_back', $car) }}" method="post" class="btn col-md-12 col-12">
                                 @csrf
-                                <button type="submit" class="btn mt-4 btn-secondary px-2">RENDRE CETTE VOITURE</button>
+                                <button type="submit" class="btn mt-4 btn-ground px-2">RENDRE CETTE VOITURE</button>
                             </form>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
             @endforeach
         @else
             <div class="container-fluid mt-4">
-                <p class="text-center mt-4 uppercase">VOUS N'AVEZ LOUÉ AUCUNE VOITURE</p>
+                <p class="text-center mt-4 uppercase">AUCUNE VOITURE LOUÉ</p>
             </div>
         @endif
     </div>

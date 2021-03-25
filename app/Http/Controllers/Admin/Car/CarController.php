@@ -48,7 +48,7 @@ class CarController extends Controller
             'nbPlaces' => $request->nbplaces,
             'price' => $request->price
         ]);
-        return redirect()->route('cars@dashboard');
+        return redirect()->route('cars@dashboard')->with('add_success', "succesfully added an element");
     }
 
     public function renderUpdateForm(Car $car, Request $request)
@@ -77,7 +77,10 @@ class CarController extends Controller
         $car->nbPlaces = $request->nbplaces;
         $car->price = $request->price;
         $car->save();
-        return redirect()->route('cars@dashboard');
+        if (!$car->wasChanged()) {
+            return redirect()->route('cars@dashboard');
+        }
+        return redirect()->route('cars@dashboard')->with('update_success', "successfully updated an element");
     }
 
     public function delete(Car $car)
@@ -85,6 +88,6 @@ class CarController extends Controller
         $car->renter()->dissociate();
         $car->delete();
 
-        return back();
+        return back()->with('delete_success', "successfully deleted an element");
     }
 }

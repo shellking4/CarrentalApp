@@ -43,3 +43,5 @@ Route::get('/me/rents/free.rent.success', [HomeController::class, 'sendFreeRentS
 Route::get('/dashboard/users/with.rented.cars/index', [UserController::class, 'getUserWithRentedCars'])->name('users.with.rented.cars');
 Route::get('/dashboard/users/with.free.rented.cars/index', [UserController::class, 'getUserWithFreeRentedCars'])->name('users.with.free.rented.cars');
 Route::get('/download/platform.policies/pdfview', [HomeController::class, 'pdfview'])->name('pdfview');
+Route::get('/carrental/platform/user/pass.reset', [HomeController::class, 'renderPassResetForm'])->name('pass.reset.view');
+Route::post('/carrental/platform/user/pass.reset/action', [HomeController::class, 'resetPassword'])->name('pass.reset.action');

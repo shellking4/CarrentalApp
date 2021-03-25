@@ -1,11 +1,11 @@
 let baseIdString = "timeLimit_";
 
 document.getElementById("year").innerHTML = new Date().getFullYear();
+const navLinks = document.querySelectorAll('.nav-links li');
 
 const navSlide = () => {
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.nav-links');
-    const navLinks = document.querySelectorAll('.nav-links li');
     burger.addEventListener('click', () => {
         //Toggle nav
         nav.classList.toggle('nav-active');
@@ -76,15 +76,71 @@ const freeRentSuccessAlertDisplay = () => {
 const endOfCarUsageAlert = () => {
     Swal.fire(
         {
-            title: "TEMPS D'USAGE DE VOITURE ÉCOULÉ",
+            title: "VOTRE MOT DE PASSE A ÉTÉ CHANGÉ AVEC SUCCÈS",
             text: "Votre temps d'utilisation de cette voiture est écoulé. \n\n Veuillez rendre promptement la voiture au parc CaRRentAL le plus proche",
             icon: "warning"
         }
     );
 }
 
+const passResetSuccessAlert = () => {
+    var element = document.querySelector('.pass-reset-success');
+    if (element) {
+        Swal.fire(
+            {
+                title: "MOT DE PASSE CHANGÉ AVEC SUCCÈS",
+                text: "Veuillez bien garder le nouveau mot de passe",
+                icon: "success"
+            }
+        );
+    }
+}
+
+const addAlert = () => {
+    var element = document.querySelector('.add-success');
+    if (element) {
+        Swal.fire(
+            {
+                title: "AJOUT EFFECTUÉ AVEC SUCCÈS",
+                text: "",
+                icon: "success"
+            }
+        );
+    }
+}
+
+const updateAlert = () => {
+    var element = document.querySelector('.update-success');
+    if (element) {
+        Swal.fire(
+            {
+                title: "MODIFICATION EFFECTUÉ AVEC SUCCÈS",
+                text: "",
+                icon: "success"
+            }
+        );
+    }
+}
+
+const deleteAlert = () => {
+    var element = document.querySelector('.delete-success');
+    if (element) {
+        Swal.fire(
+            {
+                title: "SUPPRESSION EFFECTUÉ AVEC SUCCÈS",
+                text: "",
+                icon: "success"
+            }
+        );
+    }
+}
+
+addAlert();
+updateAlert();
+deleteAlert();
 rentSuccessAlertDisplay();
 freeRentSuccessAlertDisplay();
+passResetSuccessAlert();
 
 // Timer methods
 const getTimeLimitFromServer = (element) => {

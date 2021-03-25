@@ -25,6 +25,12 @@
                         <ul>
                             <li><a href="{{ route('auth.user_rents') }}">LOCATIONS</a></li>
                             <li><a href="{{ route('auth.user_free_rents') }}">EMPRUNTS</a></li>
+                        </ul>
+                    </li>
+                    <li class="settings">
+                        <button><i class="fas fa-cog fa-fw"></i></button>
+                        <ul>
+                            <li><a href="{{ route('pass.reset.view') }}">CHANGER DE MOT DE PASSE</a></li></li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
@@ -43,12 +49,6 @@
                             <ul>
                                 <li><a href="{{ route('auth.user_rents') }}">LOCATIONS</a></li>
                                 <li><a href="{{ route('auth.user_free_rents') }}">EMPRUNTS</a></li>
-                                <li>
-                                    <form action="{{ route('logout') }}" method="POST">
-                                        @csrf
-                                        <button type="submit">DÉCONNEXION</button>
-                                    </form>
-                                </li>
                             </ul>
                         </li>
                         <li class="users">
@@ -65,8 +65,20 @@
                                 <li><a href="{{ route('cars@dashboard') }}">VOITURES</a></li>
                                 <li><a href="{{ route('car_add') }}">AJOUTER VOITURE</a></li>
                             </ul>
-                        <li>
-                        <li class="home"><a href="{{ route('home') }}">ACCUEIL</a></li>                     
+                        </li>
+                        <li class="settings">
+                            <button><i class="fas fa-cog fa-fw"></i></button>
+                            <ul>
+                                <li><a href="{{ route('pass.reset.view') }}">CHANGER DE MOT DE PASSE</a></li></li>
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit">DÉCONNEXION</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>                     
+                        <li class="home"><a href="{{ route('home') }}">ACCUEIL</a></li>
                     @endif
                 @endauth
                 @guest

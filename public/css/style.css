@@ -188,8 +188,15 @@ h5, h4 {
     font-size: 18px;
 }
 
-.users, .account, .cars {
+.users, 
+.account, 
+.cars, 
+.settings {
     position: relative;
+}
+
+.settings {
+    z-index: 9;
 }
 
 .cars {
@@ -206,7 +213,8 @@ h5, h4 {
 
 .account button,
 .users button,
-.cars button {
+.cars button,
+.settings button {
     cursor: pointer;
     border: none;
     background: none;
@@ -230,6 +238,23 @@ h5, h4 {
     transition: all 0.6s ease;
 } 
 
+.settings ul {
+    position: absolute;
+    background-color: #193240;
+    width: 310px;
+    height: 150px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.6s ease;
+}
+
 .account ul, 
 .cars ul {
     position: absolute;
@@ -251,13 +276,15 @@ h5, h4 {
 .account button:hover,
 .users button:hover,
 .cars button:hover,
-.home a:hover {
+.home a:hover,
+.settings button:hover {
     color: rgb(26, 165, 170);
 }
 
 .account li a:hover,
 .users li a:hover,
-.cars li a:hover {
+.cars li a:hover,
+.settings li a:hover {
     color: rgb(26, 165, 170);
 }
 
@@ -278,7 +305,8 @@ h5, h4 {
 
 .users button:focus + ul,
 .account button:focus + ul, 
-.cars button:focus + ul {
+.cars button:focus + ul,
+.settings button:focus + ul {
     opacity: 1;
     background-color:  #193240;
     visibility: initial;
@@ -286,6 +314,23 @@ h5, h4 {
 }
 
 .rentSuccessMessage {
+    visibility: hidden;
+}
+
+.pass-reset-success {
+    visibility: hidden;
+}
+
+
+.add-success {
+    visibility: hidden;
+}
+
+.update-success {
+    visibility: hidden;
+}
+
+.delete-success {
     visibility: hidden;
 }
 
@@ -320,6 +365,10 @@ h5, h4 {
 
 .theme-ground {
    background-color: #193240
+}
+
+.btn-ground {
+    background-color: #A5ADB5;
 }
 
 .download-link {

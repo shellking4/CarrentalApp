@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FreeRentFormRequest;
+use App\Http\Requests\PassResetFormRequest;
+use App\Http\Requests\RegisterUserRequest;
 use App\Http\Requests\RentFormRequest;
 use App\Models\Car;
 use App\Models\User;
@@ -12,6 +14,7 @@ use DateInterval;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -115,6 +118,7 @@ class HomeController extends Controller
         $car->renter()->dissociate();
         $car->costIfRented = null;
         $car->locationDaysNumber = null;
+        $car->endOfRentDate = null;
         $car->save();
         return redirect()->route('auth.user_rents');
     }
@@ -124,6 +128,7 @@ class HomeController extends Controller
         $car->isFreeRented = false;
         $car->renter()->dissociate();
         $car->locationDaysNumber = null;
+        $car->endOfRentDate = null;
         $car->save();
         return redirect()->route('auth.user_free_rents');
     }
@@ -135,5 +140,25 @@ class HomeController extends Controller
             return $pdf->download('policies.pdf');
         }
         return view('parc.policies');
+    }
+
+    public function renderPassResetForm()
+    {
+        return view('auth.passReset');
+    }
+
+    public function resetPassword(PassResetFormRequest $request)
+    {
+        $user = User::find(Auth::user()->id);
+        $user->password = Hash::make($request->password);
+        $user->save();
+        $credentials = [
+            'login' => $user->login,
+            'password' => $request->password
+        ];
+        if (!Auth::attempt($credentials)) {
+            return back()->with('status', 'IDENTIFIANTS DE CONNEXION INVALIDES');
+        }
+        return redirect()->route('home')->with('pass_reset_success', 'Password Successfully Reset');
     }
 }

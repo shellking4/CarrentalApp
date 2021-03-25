@@ -7,6 +7,9 @@
         </div>
     </div>
     <div class="container">
+        @if (session()->has('pass_reset_success'))
+            <p class="pass-reset-success"></p>
+        @endif
         @if ($cars->count())
             @foreach($cars as $car)
                 <div class="row mt-4 mr-md-4 mb-3 py-3">

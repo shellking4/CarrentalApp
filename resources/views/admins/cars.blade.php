@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (session()->has('add_success'))
+        <p class="add-success"></p>
+    @endif
+    @if (session()->has('update_success'))
+        <p class="update-success"></p>
+    @endif
+    @if (session()->has('delete_success'))
+        <p class="delete-success"></p>
+    @endif
     <div class="flex justify-center mt-5">
         <div class="w-8/12 theme-ground p-6 rounded-lg">
             <h5 class="flex form-title text-white justify-center">ADMIN DASHBOARD</h5>
