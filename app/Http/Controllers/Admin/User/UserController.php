@@ -22,9 +22,8 @@ class UserController extends Controller
 
     public function index()
     {
-        $id = Auth::user()->id;
-        $allUsers = User::all();
-        $users = $allUsers->except([$id]);
+        $matchThis = ['roles' => '["user"]'];
+        $users = User::where($matchThis)->get();
         return view('admins.users', [
             'users' => $users
         ]);
@@ -87,8 +86,8 @@ class UserController extends Controller
 
     public function getUserWithRentedCars()
     {
-        $id = Auth::user()->id;
-        $allUsers = User::all()->except([$id]);
+        $matchThis = ['roles' => '["user"]'];
+        $allUsers = User::where($matchThis)->get();
         $users = [];
         foreach ($allUsers as $user) {
             $userCars = $user->rentedCars;
@@ -106,8 +105,8 @@ class UserController extends Controller
 
     public function getUserWithFreeRentedCars()
     {
-        $id = Auth::user()->id;
-        $allUsers = User::all()->except([$id]);
+        $matchThis = ['roles' => '["user"]'];
+        $allUsers = User::where($matchThis)->get();
         $users = [];
         foreach ($allUsers as $user) {
             $userCars = $user->rentedCars;
