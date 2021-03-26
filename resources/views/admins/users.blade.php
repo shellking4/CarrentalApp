@@ -3,9 +3,11 @@
 @section('content')
     @if (session()->has('update_success'))
         <p class="update-success"></p>
+        {{ Session::forget('update_success') }}
     @endif
     @if (session()->has('delete_success'))
         <p class="delete-success"></p>
+        {{ Session::forget('delete_success') }}
     @endif
     <div class="flex justify-center mt-5">
         <div class="w-8/12 theme-ground p-6 rounded-lg">

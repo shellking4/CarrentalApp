@@ -18,7 +18,13 @@ use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
-    public function index(Request $request)
+    public function __construct()
+    {
+        $this->middleware('rent')->only('renderRentForm');
+        $this->middleware('free_rent')->only('renderFreeRentForm');
+    }
+
+    public function index()
     {
         $matchThese = ['isFreeRented' => false, 'isRented' => false];
         $cars = Car::where($matchThese)->get();
@@ -27,7 +33,7 @@ class HomeController extends Controller
         ]);
     }
 
-    public function getUserFreeRents()
+    public function getUserFreeRents(Request $request)
     {
         $user = Auth::user();
         if (!$user) {
@@ -39,7 +45,7 @@ class HomeController extends Controller
         ]);
     }
 
-    public function getUserRents()
+    public function getUserRents(Request $request)
     {
         $user = Auth::user();
         if (!$user) {
@@ -95,7 +101,7 @@ class HomeController extends Controller
         $car->endOfRentDate = $endOfRent;
         $car->save();
         $user->save();
-        return redirect()->route('auth.user_rents')->with('rent_success', 'Car successfully rented');
+        return redirect()->route('auth.user_rents'); //->with('rent_success', 'Car successfully freely rented');
     }
 
     public function renderRentForm(Car $car)

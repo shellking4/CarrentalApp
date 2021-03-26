@@ -76,7 +76,7 @@ const freeRentSuccessAlertDisplay = () => {
 const endOfCarUsageAlert = () => {
     Swal.fire(
         {
-            title: "VOTRE MOT DE PASSE A ÉTÉ CHANGÉ AVEC SUCCÈS",
+            title: "TEMPS D'UTILISATION ÉCOULÉ",
             text: "Votre temps d'utilisation de cette voiture est écoulé. \n\n Veuillez rendre promptement la voiture au parc CaRRentAL le plus proche",
             icon: "warning"
         }
@@ -109,6 +109,7 @@ const addAlert = () => {
     }
 }
 
+
 const updateAlert = () => {
     var element = document.querySelector('.update-success');
     if (element) {
@@ -121,6 +122,10 @@ const updateAlert = () => {
         );
     }
 }
+
+
+
+
 
 const deleteAlert = () => {
     var element = document.querySelector('.delete-success');
@@ -135,9 +140,12 @@ const deleteAlert = () => {
     }
 }
 
-addAlert();
-updateAlert();
+
+
+
 deleteAlert();
+updateAlert();
+addAlert();
 rentSuccessAlertDisplay();
 freeRentSuccessAlertDisplay();
 passResetSuccessAlert();

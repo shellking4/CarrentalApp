@@ -33,7 +33,6 @@ Route::get('/me/rents', [HomeController::class, 'getUserRents'])->name('auth.use
 Route::get('/platform.policies', [HomeController::class, 'showCarrentalPolicies'])->name('carrental.policies');
 Route::post('/freeRent/{car}', [HomeController::class, 'freeRent'])->name('free_rent.proceed');
 Route::post('/rent/{car}', [HomeController::class, 'rent'])->name('rent.proceed');
-Route::resource('policies', HomeController::class);
 Route::get('/rent/{car}/form', [HomeController::class, 'renderRentForm'])->name('rent_perform_view');
 Route::get('/free.rent/{car}/form', [HomeController::class, 'renderFreeRentForm'])->name('free_rent_perform_view');
 Route::post('/me/rents/send.back/{car}', [HomeController::class, 'sendRentedCarBack'])->name('rented_car_send_back');
