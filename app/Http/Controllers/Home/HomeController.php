@@ -30,8 +30,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        $matchThese = ['isFreeRented' => false, 'isRented' => false];
-        $cars = Car::where($matchThese)->get();
+        //$matchThese = ['isFreeRented' => false, 'isRented' => false];
+        $cars = Car::all();
         return view('parc.cars', [
             'cars' => $cars
         ]);
