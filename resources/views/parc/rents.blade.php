@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    @if (session()->has('rent_success'))
-        <p class="rentSuccessMessage">{{ $owedRentAmount }}</p>
-    @endif
+    <p class="frentSuccessMessage">{{ count($rents) }}</p>
+    <p class="amount">{{ $owedRentAmount }}</p>
     <div class="flex justify-center mt-5">
         <div class="w-8/12 theme-ground p-6 rounded-lg">
             <h5 class="flex form-title text-white  text-center justify-center uppercase">MES LOCATIONS DE VOITURES</h5>

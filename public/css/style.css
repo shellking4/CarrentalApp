@@ -317,6 +317,10 @@ h5, h4 {
     visibility: hidden;
 }
 
+.freeRentSuccessMessage {
+    visibility: hidden;
+}
+
 .pass-reset-success {
     visibility: hidden;
 }

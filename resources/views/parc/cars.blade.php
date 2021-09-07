@@ -9,7 +9,6 @@
     <div class="container">
         @if (session()->has('pass_reset_success'))
             <p class="pass-reset-success"></p>
-            {{ Session::forget('pass_reset_success') }}
         @endif
         @if ($cars->count())
             @foreach($cars as $car)

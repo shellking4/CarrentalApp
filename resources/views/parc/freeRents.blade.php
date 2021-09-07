@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    @if (session()->has('free_rent_success'))
-        <p class="freeRentSuccessMessage"></p>
+    <p class="freeRentSuccessMessage">{{ count($freeRents) }}</p>
+    @if ($value->actual)
+        
     @endif
     <div class="flex justify-center mt-5">
         <div class="w-8/12 theme-ground p-6 rounded-lg">

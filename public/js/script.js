@@ -62,7 +62,23 @@ const rentSuccessAlertDisplay = () => {
 
 const freeRentSuccessAlertDisplay = () => {
     var element = document.querySelector('.freeRentSuccessMessage');
-    if (element) {
+    var itemCount = parseInt(element.innerHTML);
+    console.log(itemCount);
+    localStorage.removeItem('itemCount');
+    console.log(localStorage.getItem('itemCount'));
+    if (localStorage.getItem('itemCount') != null) {
+        if (itemCount == localStorage.getItem('itemCount') + 1) {
+            Swal.fire(
+                {
+                    title: "SUCCÈS DE VOTRE EMPRUNT DE VOITURE",
+                    text: "Votre emprunt de voiture a été réalisé avec succès \n\n Veuillez rendre la voiture à temps pour éviter des complications inutiles",
+                    icon: "success"
+                }
+            );
+            localStorage.setItem('itemCount', itemCount);
+        }
+    } else {
+        localStorage.setItem('itemCount', itemCount);
         Swal.fire(
             {
                 title: "SUCCÈS DE VOTRE EMPRUNT DE VOITURE",
@@ -70,8 +86,11 @@ const freeRentSuccessAlertDisplay = () => {
                 icon: "success"
             }
         );
+        console.log(localStorage.getItem('itemCount'));
     }
 }
+
+
 
 const endOfCarUsageAlert = () => {
     Swal.fire(
@@ -223,3 +242,4 @@ elements.forEach((element) => {
     var index = parseInt(element.parentElement.children[0].innerHTML);
     startTimer(element, index);
 });
+

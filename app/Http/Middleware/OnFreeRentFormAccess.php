@@ -17,7 +17,7 @@ class OnFreeRentFormAccess
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Route::currentRouteName() == "auth.user_free_rents") {
+        if (Route::currentRouteName() == "rent_perform_view") {
             return redirect()->route('home');
         }
         return $next($request);

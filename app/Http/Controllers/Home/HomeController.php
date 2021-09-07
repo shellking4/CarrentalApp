@@ -9,6 +9,7 @@ use App\Http\Requests\RegisterUserRequest;
 use App\Http\Requests\RentFormRequest;
 use App\Models\Car;
 use App\Models\User;
+use App\Util\Value;
 use Barryvdh\DomPDF\Facade as PDF;
 use DateInterval;
 use DateTime;
@@ -18,10 +19,13 @@ use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
+    public static $rentsCount;
+    public static $freeRentsCount;
+
     public function __construct()
     {
-        $this->middleware('rent')->only('renderRentForm');
-        $this->middleware('free_rent')->only('renderFreeRentForm');
+        self::$rentsCount = new Value();
+        self::$freeRentsCount = new Value();
     }
 
     public function index()
@@ -40,8 +44,10 @@ class HomeController extends Controller
             return redirect()->route('login');
         }
         $freeRents = $user->rentedCars->where('isFreeRented', true)->all();
+        $value = new Value();
         return view('parc.freeRents', [
-            'freeRents' => $freeRents
+            'freeRents' => $freeRents,
+            'value' => $value
         ]);
     }
 
@@ -53,9 +59,12 @@ class HomeController extends Controller
         }
         $rents = $user->rentedCars->where('isRented', true)->all();
         $owedRentAmount = $user->owedRentAmount;
+
+
         return view('parc.rents', [
             'rents' => $rents,
-            'owedRentAmount' => $owedRentAmount
+            'owedRentAmount' => $owedRentAmount,
+            'value' => self::$rentsCount
         ]);
     }
 
@@ -101,11 +110,12 @@ class HomeController extends Controller
         $car->endOfRentDate = $endOfRent;
         $car->save();
         $user->save();
-        return redirect()->route('auth.user_rents'); //->with('rent_success', 'Car successfully freely rented');
+        return redirect()->route('auth.user_rents')->with('rent_success', 'Car successfully freely rented');
     }
 
     public function renderRentForm(Car $car)
     {
+
         return view('parc.rentForm', [
             'car' => $car
         ]);
